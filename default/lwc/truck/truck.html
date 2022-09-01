@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Trucks Available List" icon-name="custom:custom31">
+        <div style="width: auto;">
+    <div class="slds-m-around_medium" style="width:80%;height:50%;">
+            <template if:true={trucks}>
+                <table class="slds-table slds-table_bordered slds-p-top_x-small slds-border_left slds-border_right">
+                    <tr>
+                        <th><div class="slds-truncate">Sl. No.</div></th>
+                        <th><div class="slds-truncate">Name</div></th>
+                        <th><div class="slds-truncate">Image</div></th>
+                        <th><div class="slds-truncate">Model</div></th>
+                        <th><div class="slds-truncate">Load Capacity</div></th>
+                        <th><div class="slds-truncate">Cost</div></th>
+                        <th><div class="slds-truncate">License plate</div></th>
+                    </tr>
+                    <template for:each={trucks} for:item="tr" for:index="t">
+                    <tr class="image" key={tr.Id}>
+                        <!-- <td><input type="button" value={tr.Id} onclick={dosomething}></td> -->
+                        <td><div class="slds-truncate" onclick={removeItem} data-value={tr.Id}>{t}.</div></td>
+                        <td><div class="slds-truncate" onclick={removeItem} data-value={tr.Id}>{tr.Name}</div></td>  
+                        <td class="imagee"><lightning-formatted-rich-text value={tr.Image__c} alt="NoImage"></lightning-formatted-rich-text></td>
+                        <td><div class="slds-truncate" onclick={removeItem} data-value={tr.Id}>{tr.Model__c}</div></td>
+                        <td><div class="slds-truncate" onclick={removeItem} data-value={tr.Id}>{tr.Load_Capacity__c}</div></td> 
+                        <td><div class="slds-truncate" onclick={removeItem} data-value={tr.Id}>{tr.cost__c}</div></td>
+                        <td><div class="slds-truncate" onclick={removeItem} data-value={tr.Id}>{tr.License_plate__c}</div></td>
+                     </tr>
+                </template>
+            </table>
+
+            <br/>
+
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+    </div>
+    </div>
+        </lightning-card>
+</template>
+
+   
+

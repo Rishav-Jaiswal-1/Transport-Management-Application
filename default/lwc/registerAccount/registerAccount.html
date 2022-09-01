@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <template if:true={account}>
+        <lightning-record-form object-api-name={orderObject} layout-type="Full" columns="3" onsuccess={AccountFormSubmitted}>
+        </lightning-record-form>
+    </template>
+    <template if:false={account}>
+        <lightning-record-form object-api-name={orderObject1} layout-type="Full" columns="3" onsuccess={ContactFormSubmitted}>
+        </lightning-record-form>
+    </template>
+    </lightning-card>
+</template>

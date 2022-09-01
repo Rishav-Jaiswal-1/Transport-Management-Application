@@ -1,0 +1,41 @@
+<template>
+    <lightning-card class="slds-m-around_medium slds-p-around_small">
+    <template if:true={edit}>
+    <lightning-record-edit-form object-api-name="Truck_Booking__c" onsuccess={handleSuccess} onsubmit ={handleSubmit}>
+<lightning-messages>
+</lightning-messages>
+<center>
+<lightning-input-field field-name='Account__c' class="width50"></lightning-input-field>
+<lightning-input-field field-name='Case__c' class="width50"></lightning-input-field>
+<lightning-input-field field-name='From__c' class="width50"></lightning-input-field>
+<lightning-input-field field-name='To__c' class="width50"></lightning-input-field>
+<lightning-input-field field-name='Start_Date_and_Time__c' class="width50"></lightning-input-field>
+<lightning-input-field field-name='End_Date_and_Time__c' class="width50"></lightning-input-field>
+<lightning-input-field field-name='Total_Weight__c' class="width50"></lightning-input-field>
+<br/>
+    <p class="slds-m-bottom_small">
+        <lightning-button label={clickedButtonLabel} onclick={handleTruck}></lightning-button>
+    </p>
+    <template if:true={boolVisible}>
+        <div>
+            <c-truck>
+
+            </c-truck>
+    </div>
+    </template>
+
+<lightning-input-field field-name='Truck__c' class="width50"></lightning-input-field>
+    <center>
+        <lightning-button class="slds-m-top_small" type="submit" label="Book Truck and Enter Load Details"></lightning-button>
+        <lightning-button class="slds-m-top_small" label="Cancel" onclick={handleReset}></lightning-button>
+        </center>
+    </center>
+</lightning-record-edit-form>
+</template>
+ <template if:false={edit}>
+    <c-truck-load recd={record.id}>
+    </c-truck-load>
+</template>
+
+</lightning-card>
+</template>

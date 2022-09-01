@@ -1,0 +1,90 @@
+<template>
+    <lightning-record-view-form record-id={rec} object-api-name="Truck_Booking__c">
+        <lightning-messages>
+        </lightning-messages>
+        <lightning-output-field field-name='Account__c'></lightning-output-field>
+        <lightning-output-field field-name='From__c'></lightning-output-field>
+        <lightning-output-field field-name='To__c'></lightning-output-field>
+        <lightning-output-field field-name='Start_Date_and_Time__c'></lightning-output-field>
+        <lightning-output-field field-name='End_Date_and_Time__c'></lightning-output-field>
+        <lightning-output-field field-name='Total_Weight__c' value='{defa}' readonly disabled></lightning-output-field>        
+        <lightning-output-field field-name='Truck__c'></lightning-output-field>
+        </lightning-record-view-form>
+        <br/><br/><br/>
+        <!-- <c-my-bookings recid={recordi}>
+        </c-my-bookings> -->
+        <!-- <lightning-card title="Trucks Available List" icon-name="standard:contact"> <br/>
+            <div style="width: auto;">
+        <div class="slds-m-around_medium" style="width:70%;height:50%">
+                <template if:true={MyItems}>
+                    <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+                    <template for:each={MyItems} for:item="tr" for:index="t">
+                        <tr class="image" key={tr.Id}>
+                            <td>{t}.</td>
+                            <td>{tr.Name}</td>  
+                            <td>{tr.Item_Name__c}</td>
+                            <td>{tr.Item_Type__c}</td> 
+                            <td>{tr.Weight__c}</td>
+                         </tr>
+                    </template>
+                </table>
+                </template>
+        </div>
+            </div>
+        </lightning-card>     -->
+       
+        <lightning-card title="Items List" icon-name="standard:payment"> <br/>
+            <div style="width: auto;">
+        <div class="slds-m-around_medium" style="width:auto;height:auto">
+                <template if:true={MyItems}>
+                    <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+                    <template for:each={MyItems} for:item="tr" for:index="t">
+                        <tr class="image" key={tr.Id}>
+                            <td>{t}.</td>
+                            <td>{tr.Id}</td>
+                            <td>{tr.Name}</td>  
+                            <td>{tr.Item_Name__c}</td>
+                            <td>{tr.Item_Type__c}</td>
+                            <td>{tr.Weight__c}</td> 
+                        </tr>
+                    </template></table>
+                    <lightning-input type="text" name="val" label="Enter item record id" placeholder="Enter the record id of item to edit" value={val} onchange={handlesetedit}></lightning-input>
+                    <lightning-button label="Edit" onclick={handleedit}></lightning-button>
+                
+                </template>
+                </div>    
+                </div>
+                </lightning-card>
+                <template if:true={edi}>
+                <div style="width: 50%;">
+                    <lightning-record-edit-form record-id={val} object-api-name="Truck_load__c" onsuccess={handleSuccess1} onsubmit ={handleSubmit1}>
+                    <lightning-messages>
+                    </lightning-messages>
+                    <lightning-input-field field-name='Truck_Booking__c' value={rec} disabled></lightning-input-field>
+                    <lightning-input-field field-name='Item_Type__c'></lightning-input-field>
+                    <lightning-input-field field-name='Item_Name__c'></lightning-input-field>
+                    <lightning-input-field field-name='Weight__c'></lightning-input-field>
+                    <center>
+                        <lightning-button class="slds-m-top_small" type="submit" label="Update"></lightning-button>
+                    <lightning-button label="Payment Status" onclick={handleButton}></lightning-button></center>
+                </lightning-record-edit-form></div>
+            </template>
+<template if:false={complete}>
+   <center><h1 style="font-size: 3em; color:cyan">Welcome To The Payment Section</h1></center><br></br>
+    <div style="widows: 50%">
+        <lightning-record-edit-form object-api-name="Payment__c" onsuccess={handleSuccess} onsubmit ={handleSubmit}>
+        <lightning-messages>
+        </lightning-messages>
+        <lightning-input-field field-name='Truck_Booking__c' value={rec}></lightning-input-field>
+        <lightning-input-field field-name='Case__c'></lightning-input-field>
+        <lightning-input-field field-name='Mode_of_Payment__c'></lightning-input-field>
+        <lightning-input-field field-name='Downpay__c'></lightning-input-field>
+        <center><lightning-button class="slds-m-top_small" type="submit" label="Confirm Payment">
+        </lightning-button></center>
+    </lightning-record-edit-form></div>
+</template>
+    <template if:true={complete}>
+    <center>
+    <lightning-button label="Payment Completed,Get Full Booking Details" onclick={handleButton}>
+    </lightning-button></center></template>
+</template>

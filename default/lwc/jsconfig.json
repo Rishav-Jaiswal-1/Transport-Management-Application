@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/paymentStatus": [
+                "paymentStatus/paymentStatus.js"
+            ],
+            "c/registerAccount": [
+                "registerAccount/registerAccount.js"
+            ],
+            "c/truck": [
+                "truck/truck.js"
+            ],
+            "c/truckBookingCustomer": [
+                "truckBookingCustomer/truckBookingCustomer.js"
+            ],
+            "c/truckLoad": [
+                "truckLoad/truckLoad.js"
+            ],
+            "c/TruckBookingCustomer": [
+                "TruckBookingCustomer/TruckBookingCustomer.js"
+            ],
+            "c/myBooking": [
+                "myBooking/myBooking.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
